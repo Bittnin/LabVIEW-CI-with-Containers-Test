@@ -281,7 +281,7 @@
   <script>
   (function(){
     var RT = {"masscompile": {"label": "Mass Compile", "platforms": {"windows": {"wf": "masscompile-windows-container.yml", "inputs": {"commit_sha": "{sha}"}}}}, "vi-analyzer": {"label": "VI Analyzer", "platforms": {"windows": {"wf": "run-vi-analyzer-windows-container.yml", "inputs": {"commit_sha": "{sha}"}}}}, "vidiff": {"label": "VIDiff", "platforms": {"windows": {"wf": "vidiff-windows-container.yml", "inputs": {"head_sha": "{sha}", "base_sha": "{parent}"}}}}, "snapshots": {"label": "VI Snapshots", "platforms": {"all": {"wf": "vi-snapshots.yml", "inputs": {"mode": "backfill"}}}}, "snapshots2": {"label": "VI Browser 2.0 Snapshots", "platforms": {"windows": {"wf": "vi-snapshots-json-windows.yml", "inputs": {"target_sha": "{sha}"}}}}, "unit-tests": {"label": "Unit Tests", "platforms": {"windows": {"wf": "unit-tests-windows-container.yml", "inputs": {"commit_sha": "{sha}"}}}}, "antidoc": {"label": "Antidoc", "platforms": {"windows": {"wf": "run-antidoc-windows-container.yml", "inputs": {"commit_sha": "{sha}"}}}}, "builds": {"label": "Builds", "platforms": {"windows": {"wf": "build-binaries-windows-container.yml", "inputs": {"commit_sha": "{sha}"}}}}};
-    var RT_TIMING = {"masscompile": {"windows": {"total": 6640.0, "work": null}}, "vi-analyzer": {"windows": {"total": 6651.0, "work": null}}, "vidiff": {"windows": {"total": 3760.0, "work": null}}, "snapshots2": {"windows": {"total": 3325.5, "work": null}}, "unit-tests": {"windows": {"total": 6644.0, "work": null}}, "antidoc": {"windows": {"total": 3491.5, "work": null}}, "builds": {"windows": {"total": 6647.0, "work": null}}};
+    var RT_TIMING = {"masscompile": {"windows": {"total": 6640.0, "work": null}}, "vi-analyzer": {"windows": {"total": 6651.0, "work": null}}, "vidiff": {"windows": {"total": 3760.0, "work": null}}, "snapshots2": {"windows": {"total": 944.0, "work": null}}, "unit-tests": {"windows": {"total": 6644.0, "work": null}}, "antidoc": {"windows": {"total": 3491.5, "work": null}}, "builds": {"windows": {"total": 6647.0, "work": null}}};
     var REPO = "Bittnin/LabVIEW-CI-with-Containers-Test";
     var BRANCH = "main";
     var TOK_KEY = "lvci_dispatch_token";
@@ -1304,8 +1304,8 @@
     // activities to queue. Reuses dispatchCells (oldest-first, snapshots as one
     // backfill) + the same token and optimistic-queued bridge as every other
     // dispatch on the dashboard.
-    var HIST = [{"sha": "985517ab2994f70c28cac1e0174244ec0bc74470", "short": "985517a", "msg": "Add sample code", "dep_only": false, "snapshots2": {"windows": {"have": 0, "total": 1}, "linux": {"have": 0, "total": 1}}}];                        // [{sha, short, msg}] newest-first (project revisions)
-    var RAN = {"antidoc": 1, "masscompile": 1, "unit-tests": 1, "vi-analyzer": 1, "vidiff": 1};                     // {cap:1} caps with a result/active run somewhere in history
+    var HIST = [{"sha": "985517ab2994f70c28cac1e0174244ec0bc74470", "short": "985517a", "msg": "Add sample code", "dep_only": false, "snapshots2": {"windows": {"have": 1, "total": 1}, "linux": {"have": 0, "total": 1}}}];                        // [{sha, short, msg}] newest-first (project revisions)
+    var RAN = {"antidoc": 1, "masscompile": 1, "snapshots2": 1, "unit-tests": 1, "vi-analyzer": 1, "vidiff": 1};                     // {cap:1} caps with a result/active run somewhere in history
     var CAP_META = {                            // label + sub for each known capability
       'snapshots':   ['VI Snapshots', 'Renders every changed VI (classic HTML snapshots)'],
       'snapshots2':  ['VI Browser 2.0 Snapshots', 'Renders position-aware snapshots for the VI Browser 2.0 view'],
@@ -1911,7 +1911,7 @@
   <script>
   (function(){
     var RT = {"masscompile": {"label": "Mass Compile", "platforms": {"windows": {"wf": "masscompile-windows-container.yml", "inputs": {"commit_sha": "{sha}"}}}}, "vi-analyzer": {"label": "VI Analyzer", "platforms": {"windows": {"wf": "run-vi-analyzer-windows-container.yml", "inputs": {"commit_sha": "{sha}"}}}}, "vidiff": {"label": "VIDiff", "platforms": {"windows": {"wf": "vidiff-windows-container.yml", "inputs": {"head_sha": "{sha}", "base_sha": "{parent}"}}}}, "snapshots": {"label": "VI Snapshots", "platforms": {"all": {"wf": "vi-snapshots.yml", "inputs": {"mode": "backfill"}}}}, "snapshots2": {"label": "VI Browser 2.0 Snapshots", "platforms": {"windows": {"wf": "vi-snapshots-json-windows.yml", "inputs": {"target_sha": "{sha}"}}}}, "unit-tests": {"label": "Unit Tests", "platforms": {"windows": {"wf": "unit-tests-windows-container.yml", "inputs": {"commit_sha": "{sha}"}}}}, "antidoc": {"label": "Antidoc", "platforms": {"windows": {"wf": "run-antidoc-windows-container.yml", "inputs": {"commit_sha": "{sha}"}}}}, "builds": {"label": "Builds", "platforms": {"windows": {"wf": "build-binaries-windows-container.yml", "inputs": {"commit_sha": "{sha}"}}}}};
-    var HIST = [{"sha": "985517ab2994f70c28cac1e0174244ec0bc74470", "short": "985517a", "msg": "Add sample code", "dep_only": false, "snapshots2": {"windows": {"have": 0, "total": 1}, "linux": {"have": 0, "total": 1}}}];
+    var HIST = [{"sha": "985517ab2994f70c28cac1e0174244ec0bc74470", "short": "985517a", "msg": "Add sample code", "dep_only": false, "snapshots2": {"windows": {"have": 1, "total": 1}, "linux": {"have": 0, "total": 1}}}];
     var REPO = "Bittnin/LabVIEW-CI-with-Containers-Test";
     var BRANCH = "main";
     var TOK_KEY = "lvci_dispatch_token";
@@ -2091,7 +2091,7 @@
   </script>
   <main class="lvci-main">
   <h1>CI Dashboard — LabVIEW-CI-with-Containers-Test</h1>
-  <div class="sub">Last updated: 2026-09-13 20:56 UTC &nbsp;|&nbsp; Auto-refreshes every 15 min</div>
+  <div class="sub">Last updated: 2026-09-13 21:52 UTC &nbsp;|&nbsp; Auto-refreshes every 15 min</div>
   <div class="nav">
     <a href="https://github.com/Bittnin/LabVIEW-CI-with-Containers-Test">GitHub</a>
     <a href="https://github.com/Bittnin/LabVIEW-CI-with-Containers-Test/actions">Actions</a>
