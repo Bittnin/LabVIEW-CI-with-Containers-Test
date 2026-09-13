@@ -1,0 +1,10 @@
+{
+  "platform": "windows",
+  "files": [
+    {
+      "file": "GitLab Mass Editor.vi",
+      "type": "added",
+      "report": "GitLab_Mass_Editor.vi/index.html"
+    }
+  ]
+}
